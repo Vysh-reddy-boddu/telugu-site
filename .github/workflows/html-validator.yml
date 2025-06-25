@@ -1,4 +1,4 @@
-name: HTML Lint
+name: HTML Validator
 
 on:
   push:
@@ -6,13 +6,21 @@ on:
       - master
 
 jobs:
-  lint:
+  html-validator:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Validate HTML
-        uses: tennox/html-validator-action@v1.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install html-validator-cli
+        run: npm install -g html-validator-cli
+
+      - name: Run HTML Validation
+        run: html-validator index.html --verbose
 
