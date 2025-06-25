@@ -1,0 +1,18 @@
+name: HTML Validator
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  html-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v1.1.0
+
