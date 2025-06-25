@@ -22,5 +22,5 @@ jobs:
         run: npm install -g html-validator-cli
 
       - name: Run HTML Validation
-        run: html-validator index.html --verbose
+        run: html-validator --file=index.html --verbose
 
